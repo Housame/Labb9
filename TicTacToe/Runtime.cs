@@ -49,7 +49,7 @@ namespace TicTacToe
                 return 1;
             }
             //Winning Condition For Third Row   
-            else if (arr[6] == arr[7] && arr[7] == arr[8])
+            else if (arr[7] == arr[8] && arr[8] == arr[9])
             {
                 return 1;
             }
