@@ -62,17 +62,27 @@ namespace TicTacToe
             Thread.Sleep(2000);
         }
 
-        internal void PlayerOneWin(char[] arr, int player)
+        internal void PlayerWin(char[] arr, int player)
         {
+            if ((player % 2) + 1 == 1)
+            { 
             Console.ForegroundColor = ConsoleColor.Red;
             GraficGrid(arr);// getting filled board again
             Console.WriteLine("Player {0} has won", (player % 2) + 1);
             Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                GraficGrid(arr);// getting filled board again
+                Console.WriteLine("Player {0} has won", (player % 2) + 1);
+                Console.ResetColor();
+            }
         }
 
-        internal void PlayerTwoWin(char[] arr, int player)
+        internal void PlayerDraw(char[] arr, int player)
         {
-            Console.ForegroundColor = ConsoleColor.Green;
+            Console.ForegroundColor = ConsoleColor.Yellow;
             GraficGrid(arr);// getting filled board again
             Console.WriteLine("Draw");
             Console.ResetColor();

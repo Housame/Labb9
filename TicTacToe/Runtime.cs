@@ -22,11 +22,11 @@ namespace TicTacToe
 
             do
             {
-                Console.Clear();// whenever loop will be again start then screen will be clear 
+                Console.Clear();
                 
                 gui.PlayerTurn(player);
                 gui.GraficGrid(mark);
-                choice = TakeChoice();//Taking users choice  
+                choice = TakeChoice(); 
                 board.PlaceMarker(choice, mark, player);// calling the PlaceMarker Function  
                 player++;
                 Console.ResetColor();
@@ -103,13 +103,13 @@ namespace TicTacToe
             Console.Clear();// clearing the console  
               
 
-            if (flag == 1)// if flag value is 1 then some one has win or means who played marked last time which has win  
+            if (flag == 1)// if flag value is 1 then someone won or means who played marked last time which has win  
             {
-                gui.PlayerOneWin(arr,player);
+                gui.PlayerWin(arr,player);
             }
             else// if flag value is -1 the match will be draw and no one is winner  
             {
-                gui.PlayerTwoWin(arr, player);
+                gui.PlayerDraw(arr, player);
                 
             }
             Console.ReadLine();
@@ -117,58 +117,63 @@ namespace TicTacToe
         }
 
 
-        private int TakeChoice()
+        private int TakeChoice()//Taking users choice 
         {
-            int x = 0;
-            var input = Console.ReadKey(true).Key;
-            switch (input)
-            {
-                case ConsoleKey.NumPad1:
-                case ConsoleKey.D1:
-                    Console.WriteLine("1");
-                    x = 1;
-                    break;
-                case ConsoleKey.NumPad2:
-                case ConsoleKey.D2:
-                    Console.WriteLine("2");
-                    x = 2;
-                    break;
-                case ConsoleKey.NumPad3:
-                case ConsoleKey.D3:
-                    Console.WriteLine("3");
-                    x = 3;
-                    break;
-                case ConsoleKey.NumPad4:
-                case ConsoleKey.D4:
-                    Console.WriteLine("4");
-                    x = 4;
-                    break;
-                case ConsoleKey.NumPad5:
-                case ConsoleKey.D5:
-                    Console.WriteLine("5");
-                    x = 5;
-                    break;
-                case ConsoleKey.NumPad6:
-                case ConsoleKey.D6:
-                    Console.WriteLine("6");
-                    x = 6;
-                    break;
-                case ConsoleKey.NumPad7:
-                case ConsoleKey.D7:
-                    Console.WriteLine("7");
-                    x = 7;
-                    break;
-                case ConsoleKey.NumPad8:
-                case ConsoleKey.D8:
-                    Console.WriteLine("8");
-                    x = 8;
-                    break;
-                case ConsoleKey.NumPad9:
-                case ConsoleKey.D9:
-                    Console.WriteLine("9");
-                    x = 9;
-                    break;
-            }
+            
+                int x = 0;
+                var input = Console.ReadKey(true).Key;
+                switch (input)
+                {
+                    case ConsoleKey.NumPad1:
+                    case ConsoleKey.D1:
+                        Console.WriteLine("1");
+                        x = 1;
+                        break;
+                    case ConsoleKey.NumPad2:
+                    case ConsoleKey.D2:
+                        Console.WriteLine("2");
+                        x = 2;
+                        break;
+                    case ConsoleKey.NumPad3:
+                    case ConsoleKey.D3:
+                        Console.WriteLine("3");
+                        x = 3;
+                        break;
+                    case ConsoleKey.NumPad4:
+                    case ConsoleKey.D4:
+                        Console.WriteLine("4");
+                        x = 4;
+                        break;
+                    case ConsoleKey.NumPad5:
+                    case ConsoleKey.D5:
+                        Console.WriteLine("5");
+                        x = 5;
+                        break;
+                    case ConsoleKey.NumPad6:
+                    case ConsoleKey.D6:
+                        Console.WriteLine("6");
+                        x = 6;
+                        break;
+                    case ConsoleKey.NumPad7:
+                    case ConsoleKey.D7:
+                        Console.WriteLine("7");
+                        x = 7;
+                        break;
+                    case ConsoleKey.NumPad8:
+                    case ConsoleKey.D8:
+                        Console.WriteLine("8");
+                        x = 8;
+                        break;
+                    case ConsoleKey.NumPad9:
+                    case ConsoleKey.D9:
+                        Console.WriteLine("9");
+                        x = 9;
+                        break;
+                    default:
+                        Console.WriteLine("Choose between 1-9 plz");
+                        break;
+                }
+            
             return x;
         }
     }
