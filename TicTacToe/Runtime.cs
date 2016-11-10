@@ -109,17 +109,41 @@ namespace TicTacToe
         void GameOver(char[] arr, int flag, int player)
         {
             Console.Clear();// clearing the console  
-            if (flag==1)
-            {                
+            var counter = new Counter() { WinWin = flag };
+            var counter2 = new Counter() { DrawDraw = flag };
+            counter.WinMessage += (sender, e) =>
+            {
                 gui.PlayerWin(arr, player);
                 gui.BackOrExit();
-            }
-
-            else// if flag value is -1 the match will be draw and no one is winner  
+            };
+            counter2.DrawMessage += (sender, e) =>
             {
                 gui.PlayerDraw(arr, player);
                 gui.BackOrExit();
+            };
+            if (counter.WinWin == 1)
+            {
+                counter.OnWinnigHappend(this, EventArgs.Empty);
             }
+            else if (counter.WinWin == -1)
+            {
+                counter.OnDrawHappend(this, EventArgs.Empty);
+            }
+
+
+
+
+            //if (flag==1)
+            //{                
+            //    gui.PlayerWin(arr, player);
+            //    gui.BackOrExit();
+            //}
+
+            //else// if flag value is -1 the match will be draw and no one is winner  
+            //{
+            //    gui.PlayerDraw(arr, player);
+            //    gui.BackOrExit();
+            //}
             Console.ReadLine();
 
         }

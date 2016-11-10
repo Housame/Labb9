@@ -118,7 +118,7 @@ namespace TicTacToe
             {
                 case ConsoleKey.NumPad1:
                 case ConsoleKey.D1:
-                    runtime.Start();
+                    
                     break;
                 case ConsoleKey.NumPad2:
                 case ConsoleKey.D2:
