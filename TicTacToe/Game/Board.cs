@@ -14,6 +14,7 @@ namespace TicTacToe.Game
         public void PlaceMarker(int choice, char[] arr, int player)
         {
             GUI gui = new GUI();
+            
             // checking that position where player want to run is marked (with X or O) or not
             if (arr[choice] != 'X' && arr[choice] != 'O')
             {
