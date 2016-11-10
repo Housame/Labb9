@@ -106,34 +106,19 @@ namespace TicTacToe
             if (flag==1)
             {                
                 gui.PlayerWin(arr, player);
-                BackOrExit();
+                gui.BackOrExit();
             }
 
             else// if flag value is -1 the match will be draw and no one is winner  
             {
                 gui.PlayerDraw(arr, player);
-                BackOrExit();
+                gui.BackOrExit();
             }
             Console.ReadLine();
 
         }
 
-        private void BackOrExit()
-        {
-            gui.BackOrExit();
-            var input = Console.ReadKey(true).Key;
-            switch(input)
-            {
-                case ConsoleKey.NumPad1:
-                case ConsoleKey.D1:
-                    Start();
-                    break;
-                case ConsoleKey.NumPad2:
-                case ConsoleKey.D2:
-                    Environment.Exit(0);
-                    break;
-            }
-        }
+        
 
         int TakeChoice()//Taking users choice 
         {

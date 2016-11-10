@@ -91,10 +91,23 @@ namespace TicTacToe
 
         internal void BackOrExit()
         {
+            var runtime = new Runtime();
             Console.WriteLine("***************************");
             Console.WriteLine("*   1. Start Game again   *");
             Console.WriteLine("*   2. Exit               *");
             Console.WriteLine("***************************");
+            var input = Console.ReadKey(true).Key;
+            switch (input)
+            {
+                case ConsoleKey.NumPad1:
+                case ConsoleKey.D1:
+                    runtime.Start();
+                    break;
+                case ConsoleKey.NumPad2:
+                case ConsoleKey.D2:
+                    Environment.Exit(0);
+                    break;
+            }
         }
     }
 }
