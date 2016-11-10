@@ -9,6 +9,7 @@ namespace TicTacToe
 {
     class GUI
     {
+       
         public void GraficGrid(char[] arr)
         {
             Console.WriteLine("********************");
@@ -31,7 +32,7 @@ namespace TicTacToe
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Player 1 Chance");
-                
+
             }
             else
             {
@@ -65,11 +66,11 @@ namespace TicTacToe
         internal void PlayerWin(char[] arr, int player)
         {
             if ((player % 2) + 1 == 1)
-            { 
-            Console.ForegroundColor = ConsoleColor.Red;
-            GraficGrid(arr);// getting filled board again
-            Console.WriteLine("Player {0} has won", (player % 2) + 1);
-            Console.ResetColor();
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                GraficGrid(arr);// getting filled board again
+                Console.WriteLine("Player {0} has won", (player % 2) + 1);
+                Console.ResetColor();
             }
             else
             {
@@ -86,6 +87,14 @@ namespace TicTacToe
             GraficGrid(arr);// getting filled board again
             Console.WriteLine("Draw");
             Console.ResetColor();
+        }
+
+        internal void BackOrExit()
+        {
+            Console.WriteLine("***************************");
+            Console.WriteLine("*   1. Start Game again   *");
+            Console.WriteLine("*   2. Exit               *");
+            Console.WriteLine("***************************");
         }
     }
 }

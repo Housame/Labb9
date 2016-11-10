@@ -14,13 +14,13 @@ namespace TicTacToe
         GUI gui = new GUI();
         int choice;
         public static int flag { get; set; } = 0;
+        public event EventHandler ThresholdReached;
 
         public void Start()
         {
             Node grid = new Node();
             int player = grid.Player=1;
             char[] mark = grid.Mark;
-            
 
             do
             {
@@ -103,37 +103,28 @@ namespace TicTacToe
         void GameOver(char[] arr, int flag, int player)
         {
             Console.Clear();// clearing the console  
-            if (flag==1)
-            {                
-                gui.PlayerWin(arr, player);
-                BackOrExit();
-            }
 
+
+            if (flag == 1)// if flag value is 1 then someone won or means who played marked last time which has win  
+            {
+               flag = 1;
+                ThresholdReached += (sender, e) =>
+                {
+                    gui.PlayerWin(arr, player);
+                };
+
+
+                //gui.PlayerWin(arr, player);
+            }
             else// if flag value is -1 the match will be draw and no one is winner  
             {
                 gui.PlayerDraw(arr, player);
-                BackOrExit();
+                
             }
             Console.ReadLine();
 
         }
 
-        private void BackOrExit()
-        {
-            gui.BackOrExit();
-            var input = Console.ReadKey(true).Key;
-            switch(input)
-            {
-                case ConsoleKey.NumPad1:
-                case ConsoleKey.D1:
-                    Start();
-                    break;
-                case ConsoleKey.NumPad2:
-                case ConsoleKey.D2:
-                    Environment.Exit(0);
-                    break;
-            }
-        }
 
         int TakeChoice()//Taking users choice 
         {
@@ -190,7 +181,7 @@ namespace TicTacToe
                 }
                 else
                     Console.WriteLine("Choose between 1-9");
-                Thread.Sleep(1000);
+                Thread.Sleep(1200);
                     ClearOneLine();
                 ClearOneLine();
             }
@@ -260,9 +251,14 @@ namespace TicTacToe
             Console.SetCursorPosition(0, Console.CursorTop - 1);
         }
 
-        
-
-        
+        protected virtual void OnThresholdReached(EventArgs e)
+        {
+            EventHandler handler = ThresholdReached;
+            if (handler != null)
+            {
+                handler(this, e);
+            }
+        }
     }
 }
 
